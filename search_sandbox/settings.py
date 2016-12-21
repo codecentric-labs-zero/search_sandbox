@@ -29,8 +29,17 @@ class Common(Configuration):
         'django_extensions',
         'waffle',
         'search_sandbox_api',
-        'search_sandbox_web'
+        'search_sandbox_web',
+        'haystack'
     ]
+
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+            'URL': 'http://127.0.0.1:9200/',
+            'INDEX_NAME': 'haystack',
+        },
+    }
 
     MIDDLEWARE_CLASSES = [
         'django.middleware.security.SecurityMiddleware',
